@@ -13,6 +13,11 @@ features = pickle.load(open(os.path.join(model_path, "features.pkl"), "rb"))
 
 app = Flask(__name__)
 
+# ✅ Add this route to prevent 404
+@app.route("/")
+def home():
+    return "Fraud Analyzer API is live!"
+
 # Utility: Extract table from PDF file
 def extract_pdf_table(file):
     with pdfplumber.open(file) as pdf:
